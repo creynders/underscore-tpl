@@ -1,5 +1,5 @@
 {
-  "name": "_tpl",
+  "name": "underscore-tpl",
   "authors": [
     "Camille Reynders <camille.reynders@gmail.com>"
   ],
@@ -19,7 +19,7 @@
     "lodash"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/creynders/_tpl",
+  "homepage": "https://github.com/creynders/underscore-tpl",
   "ignore": [
     "**/.*",
     "node_modules",

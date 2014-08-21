@@ -1,4 +1,4 @@
-# _tpl
+# underscore-tpl
 
 > `_.template` for objects
 
@@ -7,19 +7,19 @@
 ### Bower
 
 ```shell
-bower install _tpl
+bower install underscore-tpl
 ```
 
 ### Npm
 
 ```shell
-npm install _tpl
+npm install underscore-tpl
 ```
 
 ## Usage
 
 ```js
-var _tpl = require( '_tpl' );
+var _tpl = require( 'underscore-tpl' );
 var values = {
     foo    : "foo",
     badass : "Jules Winfield",

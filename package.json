@@ -1,5 +1,5 @@
 {
-  "name": "_tpl",
+  "name": "underscore-tpl",
   "version": "0.1.0",
   "description": "_.template for objects",
   "main": "dist/_tpl.js",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/creynders/_tpl.git"
+    "url": "git://github.com/creynders/underscore-tpl.git"
   },
   "keywords": [
     "underscore",
@@ -27,7 +27,7 @@
   "author": "Camille Reynders",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/creynders/_tpl/issues"
+    "url": "https://github.com/creynders/underscore-tpl/issues"
   },
-  "homepage": "https://github.com/creynders/_tpl"
+  "homepage": "https://github.com/creynders/underscore-tpl"
 }
