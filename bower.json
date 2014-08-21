@@ -1,0 +1,30 @@
+{
+  "name": "_tpl",
+  "authors": [
+    "Camille Reynders <camille.reynders@gmail.com>"
+  ],
+  "description": "_.template for objects",
+  "main": "dist/_tpl.js",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ], 
+  "dependencies": {
+    "lodash": "~2.4.1"
+  },
+  "keywords": [
+    "underscore",
+    "template",
+    "lodash"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/creynders/_tpl",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
