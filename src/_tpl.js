@@ -16,7 +16,7 @@
 
     // CommonJS
     if( typeof exports === "object" ){
-        module.exports = factory(require('lodash'));
+        module.exports = factory( require( 'lodash' ) );
 
         // RequireJS
     }else if( typeof define === "function" && define.amd ){
@@ -24,26 +24,29 @@
 
         // <script>
     }else{
-        root._tpl = factory(_);
+        root._tpl = factory( _ );
     }
-})( this, function(_){
+})( this, function( _ ){
     "use strict";
-    
-    return function _tpl(subject, data, settings){
-        var result = {};
-        _.each(subject, function(element, key){
+
+    return function _tpl( subject,
+                          data,
+                          settings ){
+        var result = { };
+        _.each( subject, function( element,
+                                   key ){
             var item = element;
-            key = _.template(key, data, settings);
-            if( _.isFunction(item) ){
-                item = item(data);
+            key = _.template( key, data, settings );
+            if( _.isFunction( item ) ){
+                item = item( data );
             }
-            if( _.isObject(item) ){
-                result[key] = _tpl(item, data, settings);
-            }else if( _.isString(item)){
-                result[key] = _.template(item, data, settings);
+            if( _.isObject( item ) ){
+                result[key] = _tpl( item, data, settings );
+            }else if( _.isString( item ) ){
+                result[key] = _.template( item, data, settings );
             }
-        });
+        } );
         return result;
     };
-    
+
 } );

@@ -1,0 +1,7 @@
+{
+    "baz"        : "{{ qux.mofo }}",
+    "major"      : {
+        "badass" : "{{ badass }}"
+    },
+    "{{ foo }}" : "bar"
+}
