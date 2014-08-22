@@ -44,3 +44,7 @@ console.log( _tpl( config, values ) );
 ```
 
 More to come soon!
+
+## License
+
+Released under [MIT license](LICENSE-MIT)
