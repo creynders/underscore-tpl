@@ -30,15 +30,16 @@
     "use strict";
 
     var hbs = /\{\{(.+?)\}\}/g;
+    
     var defaults = {
-        interpolateKeys : true
+        ignoreKeys : false
     };
 
-    return function _tpl( subject,
+    function _tpl( subject,
                           data,
                           settings ){
         var result;
-        var opts = _.defaults( _.clone(defaults), settings);
+        var opts= _.defaults( _.clone(settings) || {}, _.clone(defaults));
         if( opts.mustache ||
             opts.handlebars ||
             'mustache' === opts.style ||
@@ -49,7 +50,7 @@
             return _.template(subject, data, opts);
         }else if( _.isArray(subject)){
             result = [];
-            opts.interpolateKeys = false;
+            opts.ignoreKeys = true;
         }else{
             result = {};
         }
@@ -57,7 +58,7 @@
         _.each( subject, function( element,
                                    key ){
             var item = element;
-            if(opts.interpolateKeys){
+            if(! opts.ignoreKeys){
                 key = _.template( key, data, opts );
             }
             if( _.isFunction( item ) ){
@@ -70,6 +71,9 @@
             }
         } );
         return result;
-    };
+    }
+    
+    _tpl.templateSettings = defaults;
 
+    return _tpl; 
 } );
