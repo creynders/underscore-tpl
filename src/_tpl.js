@@ -38,10 +38,7 @@
                    settings ){
         var result;
         var opts = _.defaults(settings || {}, _.templateSettings );
-        if( opts.mustache ||
-            opts.handlebars ||
-            'mustache' === opts.style ||
-            'handlebars' === opts.style ){
+        if( opts.mustache || opts.handlebars ){
             opts.interpolate = hbs;
         }
         if( _.isString( subject ) ){

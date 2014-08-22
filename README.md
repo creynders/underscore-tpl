@@ -18,6 +18,14 @@ npm install underscore-tpl
 
 ## Usage
 
+### API
+
+```
+_tpl( subject, values, [settings])
+```
+
+### Example
+
 ```js
 var _tpl = require( 'underscore-tpl' );
 var values = {
@@ -43,7 +51,27 @@ console.log( _tpl( config, values ) );
 { baz: 'mofo', major: { badass: 'Jules Winfield' }, foo: 'bar' }
 ```
 
-More to come soon!
+## Settings
+
+`_tpl` accepts all [`_.template`](http://lodash.com/docs#templateSettings) settings and adds a few more:
+
+* `ignoreKeys` [Boolean]: when `true` object keys will not be interpolated. (Default: `false`)
+* `mustache|handlebars` [Boolean]: when `true` you can use mustache style tags `{{ }}` instead of ERB.
+
+These can be set either in the `settings` parameter of _tpl, e.g.:
+
+```js
+var results = _tpl(subject, values, {
+    ignorekeys: true
+});
+```
+
+or globally:
+
+```js
+_tpl.templateSettings.ignoreKeys = true;
+```
+
 
 ## License
 
