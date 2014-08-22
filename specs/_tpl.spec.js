@@ -32,4 +32,17 @@ describe( '_tpl', function(){
             expect( results ).to.contain.key( fx.values.foo );
         } );
     } );
+    describe( 'called on HBS templated objects', function(){
+        var results;
+        beforeEach( function(){
+            results = _tpl( fx.hbs, fx.values, { handlebars : true } );
+        } );
+        it( 'should interpolate variables in values', function(){
+            expect( results.baz ).to.equal( fx.values.qux.mofo );
+            expect( results.major.badass ).to.equal( fx.values.badass );
+        } );
+        it( 'should interpolate variables in keys', function(){
+            expect( results ).to.contain.key( fx.values.foo );
+        } );
+    } );
 } );

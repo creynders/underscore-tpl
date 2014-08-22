@@ -29,10 +29,20 @@
 })( this, function( _ ){
     "use strict";
 
+    var hbs = /\{\{(.+?)\}\}/g
+
     return function _tpl( subject,
                           data,
                           settings ){
         var result = { };
+        if( settings && (
+            settings.mustache ||
+            settings.handlebars ||
+            'mustache' === settings.style ||
+            'handlebars' === settings.style)
+        ){
+            settings.interpolate = hbs;
+        }
         _.each( subject, function( element,
                                    key ){
             var item = element;
