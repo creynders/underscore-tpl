@@ -1,0 +1,15 @@
+{
+    "obj" : {
+        "baz"       : "{{ qux.mofo }}",
+        "major"     : {
+            "badass" : "{{ badass }}"
+        },
+        "{{ foo }}" : "bar"
+    },
+    "str" : "{{ qux.mofo }}",
+    "arr" : [
+        "{{ qux.mofo }}",
+        "{{ badass }}",
+        "{{ foo }}"
+    ]
+}
