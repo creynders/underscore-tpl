@@ -22,7 +22,7 @@ describe( '_tpl', function(){
     describe( 'called on ERB templated objects', function(){
         var results;
         beforeEach( function(){
-            results = _tpl( fx.erb, fx.values );
+            results = _tpl( fx.erb.obj, fx.values );
         } );
         it( 'should interpolate variables in values', function(){
             expect( results.baz ).to.equal( fx.values.qux.mofo );
@@ -35,17 +35,26 @@ describe( '_tpl', function(){
     describe( 'called on ERB templated strings', function(){
         var results;
         beforeEach( function(){
-            results = _tpl( '<%= qux.mofo %>', fx.values );
+            results = _tpl( fx.erb.str, fx.values );
         } );
         it( 'should interpolate variables in values', function(){
-            console.log(results);
+            console.log( results );
             expect( results ).to.equal( fx.values.qux.mofo );
+        } );
+    } );
+    describe( 'called on ERB templated arrays', function(){
+        var results;
+        beforeEach( function(){
+            results = _tpl( fx.erb.arr, fx.values );
+        } );
+        it( 'should interpolate variables in values', function(){
+            expect( results ).to.have.members( [fx.values.qux.mofo, fx.values.foo, fx.values.badass] );
         } );
     } );
     describe( 'called on HBS templated objects', function(){
         var results;
         beforeEach( function(){
-            results = _tpl( fx.hbs, fx.values, { handlebars : true } );
+            results = _tpl( fx.hbs.obj, fx.values, { handlebars : true } );
         } );
         it( 'should interpolate variables in values', function(){
             expect( results.baz ).to.equal( fx.values.qux.mofo );
@@ -53,6 +62,25 @@ describe( '_tpl', function(){
         } );
         it( 'should interpolate variables in keys', function(){
             expect( results ).to.contain.key( fx.values.foo );
+        } );
+    } );
+    describe( 'called on hbs templated strings', function(){
+        var results;
+        beforeEach( function(){
+            results = _tpl( fx.hbs.str, fx.values, { handlebars : true } );
+        } );
+        it( 'should interpolate variables in values', function(){
+            console.log( results );
+            expect( results ).to.equal( fx.values.qux.mofo );
+        } );
+    } );
+    describe( 'called on HBS templated arrays', function(){
+        var results;
+        beforeEach( function(){
+            results = _tpl( fx.hbs.arr, fx.values, { handlebars : true } );
+        } );
+        it( 'should interpolate variables in values', function(){
+            expect( results ).to.have.members( [fx.values.qux.mofo, fx.values.foo, fx.values.badass] );
         } );
     } );
 } );

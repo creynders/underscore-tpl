@@ -29,34 +29,44 @@
 })( this, function( _ ){
     "use strict";
 
-    var hbs = /\{\{(.+?)\}\}/g
+    var hbs = /\{\{(.+?)\}\}/g;
+    var defaults = {
+        interpolateKeys : true
+    };
 
     return function _tpl( subject,
                           data,
                           settings ){
-        var result = { };
-        if( settings && (
-            settings.mustache ||
-            settings.handlebars ||
-            'mustache' === settings.style ||
-            'handlebars' === settings.style)
-        ){
-            settings.interpolate = hbs;
+        var result;
+        var opts = _.defaults( _.clone(defaults), settings);
+        if( opts.mustache ||
+            opts.handlebars ||
+            'mustache' === opts.style ||
+            'handlebars' === opts.style  ){
+            opts.interpolate = hbs;
         }
         if( _.isString(subject)){
-            return _.template(subject, data, settings);
+            return _.template(subject, data, opts);
+        }else if( _.isArray(subject)){
+            result = [];
+            opts.interpolateKeys = false;
+        }else{
+            result = {};
         }
+
         _.each( subject, function( element,
                                    key ){
             var item = element;
-            key = _.template( key, data, settings );
+            if(opts.interpolateKeys){
+                key = _.template( key, data, opts );
+            }
             if( _.isFunction( item ) ){
                 item = item( data );
             }
             if( _.isObject( item ) ){
-                result[key] = _tpl( item, data, settings );
+                result[key] = _tpl( item, data, opts );
             }else if( _.isString( item ) ){
-                result[key] = _.template( item, data, settings );
+                result[key] = _.template( item, data, opts );
             }
         } );
         return result;
