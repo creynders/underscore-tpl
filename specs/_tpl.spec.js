@@ -1,5 +1,5 @@
 /* jshint -W024, expr:true */
-/*global beforeEach, describe, it*/
+/*global beforeEach, afterEach, describe, it*/
 'use strict';
 
 var expect = require( 'chai' ).expect;
@@ -60,7 +60,34 @@ describe( '_tpl', function(){
                     expect( results ).to.contain.key('<%= foo %>');
                 } );
             } );
+            describe( 'interpolate regex', function(){
+                var results;
+                beforeEach(function(){
+                    results = _tpl(fx.custom.obj, fx.values, {
+                        interpolate : /\|(.+?)\|/g
+                    });
+                });
+                it( 'should interpolate variables in values', function(){
+                    expect( results.baz ).to.equal( fx.values.qux.mofo );
+                    expect( results.major.badass ).to.equal( fx.values.badass );
+                } );
+                it( 'should interpolate variables in keys', function(){
+                    expect( results ).to.contain.key( fx.values.foo );
+                } );
+            });
         } );
+        describe('when templateSettings was set', function(){
+            beforeEach(function(){
+                _tpl.templateSettings.ignoreKeys = true;
+            });
+            afterEach(function(){
+                _tpl.templateSettings.ignoreKeys = false;
+            });
+            it('should use them', function(){
+                var results = _tpl( fx.erb.obj, fx.values);
+                expect( results ).to.contain.key('<%= foo %>');
+            });
+        });
     } );
     describe( 'called on HBS templated objects', function(){
         var results;
