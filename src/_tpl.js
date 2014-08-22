@@ -43,6 +43,9 @@
         ){
             settings.interpolate = hbs;
         }
+        if( _.isString(subject)){
+            return _.template(subject, data, settings);
+        }
         _.each( subject, function( element,
                                    key ){
             var item = element;

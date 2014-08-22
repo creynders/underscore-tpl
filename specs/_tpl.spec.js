@@ -32,6 +32,16 @@ describe( '_tpl', function(){
             expect( results ).to.contain.key( fx.values.foo );
         } );
     } );
+    describe( 'called on ERB templated strings', function(){
+        var results;
+        beforeEach( function(){
+            results = _tpl( '<%= qux.mofo %>', fx.values );
+        } );
+        it( 'should interpolate variables in values', function(){
+            console.log(results);
+            expect( results ).to.equal( fx.values.qux.mofo );
+        } );
+    } );
     describe( 'called on HBS templated objects', function(){
         var results;
         beforeEach( function(){
