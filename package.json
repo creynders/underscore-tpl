@@ -1,8 +1,8 @@
 {
   "name": "underscore-tpl",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "_.template for objects",
-  "main": "dist/_tpl.js",
+  "main": "dist/underscore-tpl.js",
   "dependencies": {
     "lodash": "^2.4.1"
   },
