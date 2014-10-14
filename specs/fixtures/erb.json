@@ -1,15 +1,19 @@
 {
-    "obj" : {
-        "baz"        : "<%= qux.mofo %>",
-        "major"      : {
-            "badass" : "<%= badass %>"
-        },
-        "<%= foo %>" : "bar"
+  "obj": {
+    "baz": "<%= qux.mofo %>",
+    "major": {
+      "badass": "<%= badass %>"
     },
-    "str" : "<%= qux.mofo %>",
-    "arr" : [
-        "<%= qux.mofo %>",
-        "<%= badass %>",
-        "<%= foo %>"
-    ]
+    "<%= foo %>": "bar",
+    "aNumber": 5000,
+    "aTrue": true,
+    "aFalse": false,
+    "aNull": null
+  },
+  "str": "<%= qux.mofo %>",
+  "arr": [
+    "<%= qux.mofo %>",
+    "<%= badass %>",
+    "<%= foo %>"
+  ]
 }

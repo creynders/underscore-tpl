@@ -59,10 +59,12 @@
             if( _.isFunction( item ) ){
                 item = item( data );
             }
-            if( _.isObject( item ) ){
+            if( _.isObject( item ) ){ //applies to Arrays too [!]
                 result[key] = _tpl( item, data, opts );
             }else if( _.isString( item ) ){
                 result[key] = _.template( item, data, opts );
+            }else{
+                result[key] = item;
             }
         } );
         return result;

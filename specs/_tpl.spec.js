@@ -32,6 +32,16 @@ describe( '_tpl', function(){
             it( 'should interpolate variables in keys', function(){
                 expect( results ).to.contain.key( fx.values.foo );
             } );
+            it( 'should respect numbers', function(){
+                expect(results.aNumber ).to.be.a('number');
+            });
+            it( 'should respect booleans', function(){
+                expect(results.aTrue ).to.equal(true);
+                expect(results.aFalse ).to.equal(false);
+            });
+            it( 'should respect nulls', function(){
+                expect(results.aNull ).to.equal(null);
+            });
         } );
         describe( 'on strings', function(){
             var results;
